@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import User from "./pages/User";
 
 import Header from "./components/Header"
+import StyledMenu from "./components/Menu";
 
 
 function App() {
@@ -14,7 +15,10 @@ function App() {
     <>
       <Router>
         <div>
-          <Header/>
+          {/* <Header/> */}
+          <StyledMenu
+            className="menu"
+          />
           <Routes>
             <Route path="/" element={<Main/>}></Route>
             <Route path="/login" element={<Login/>}></Route>

@@ -20,7 +20,7 @@ const post_quote = async_handler(async (req, res) => {
         author: req.body.author,
         created_by_user: req.user.id
     })
-    res.status(200).send('Hello Post World')
+    res.status(200).json(quote)
 
 })
 

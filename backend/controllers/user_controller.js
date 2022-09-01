@@ -63,13 +63,7 @@ const login_user = async_handler(async (req, res) => {
 })
 
 const get_user = async_handler(async (req, res) => {
-    const {_id, name, email} = await User.findById(req.user.id)
-
-    res.status(200).json({
-        id: _id,
-        name: name,
-        email: email
-    })
+    res.status(200).json(req.user)
 })
 
 const like_quote = async_handler(async (req, res) => {
