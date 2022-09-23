@@ -20,9 +20,23 @@ const get_all_quotes = async () => {
     return response.data
 }
 
+const delete_quote = async (quote_id, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    const route = API_URL + quote_id
+
+    const response = await axios.delete(route, config)
+
+    return response.data
+}
+
 const quote_service = {
     create_quote,
-    get_all_quotes
+    get_all_quotes,
+    delete_quote
 }
 
 export default quote_service
