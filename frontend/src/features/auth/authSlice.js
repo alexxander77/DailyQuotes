@@ -33,6 +33,27 @@ export const logout = createAsyncThunk('auth/logout', async() => {
     await auth_service.logout()
 })
 
+export const like = createAsyncThunk('auth/like', async(quote_id, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.user.token
+        return await auth_service.like(quote_id, token)
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
+export const dislike = createAsyncThunk('auth/dislike', async(quote_id, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.user.token
+        return await auth_service.dislike(quote_id, token)
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
+
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
@@ -78,6 +99,39 @@ export const authSlice = createSlice({
             })
             .addCase(logout.fulfilled, (state) => {
                 state.user = null;
+            })
+            .addCase(like.pending, (state) => {
+                state.is_loading = true;
+            })
+            .addCase(like.fulfilled, (state, action) => {
+                state.is_loading = false;
+                state.is_success = true;
+                state.user.liked_quotes.push(action.payload.quote_id)
+                state.is_error=false;
+            })
+            .addCase(like.rejected, (state, action) => {
+                state.is_loading = false;
+                state.is_error = true;
+                state.is_success = false;
+                state.message = action.payload;
+            })
+            .addCase(dislike.pending, (state) => {
+                state.is_loading = true;
+            })
+            .addCase(dislike.fulfilled, (state, action) => {
+                state.is_loading = false;
+                state.is_success = true;
+                state.user.liked_quotes = state.user.liked_quotes.filter( (quote_id) => 
+                    quote_id !== action.payload.quote_id
+                )
+                console.log(state.user.liked_quotes)
+                state.is_error=false;
+            })
+            .addCase(dislike.rejected, (state, action) => {
+                state.is_loading = false;
+                state.is_error = true;
+                state.is_success = false;
+                state.message = action.payload;
             })
             
     }

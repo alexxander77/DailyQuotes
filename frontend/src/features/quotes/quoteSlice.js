@@ -45,6 +45,17 @@ export const delete_quote = createAsyncThunk('/quote/delete_quote', async(quote_
 
 })
 
+export const update_quote = createAsyncThunk('/quote/update', async(quote_data, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.user.token
+        return await quote_service.update_quote(quote_data, token)
+        
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
 export const quoteSlice = createSlice({
     name: 'quote',
     initialState,
@@ -90,6 +101,23 @@ export const quoteSlice = createSlice({
                 )
             })
             .addCase(delete_quote.rejected, (state, action) => {
+                state.is_loading = false;
+                state.is_error = true;
+                state.message = action.payload
+            })
+            .addCase(update_quote.pending, (state) => {
+                state.is_loading = true;
+            })
+            .addCase(update_quote.fulfilled, (state, action) => {
+                state.is_loading = false;
+                state.is_success = true;
+                state.quotes.map( (quote, index) => {
+                    if(quote._id == action.payload._id) {
+                        state.quotes[index] = action.payload
+                    }
+                })
+            })
+            .addCase(update_quote.rejected, (state, action) => {
                 state.is_loading = false;
                 state.is_error = true;
                 state.message = action.payload

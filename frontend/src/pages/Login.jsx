@@ -8,9 +8,10 @@ import { toast } from "react-toastify"
 import {login, reset} from "../features/auth/authSlice"
 
 
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box'
+import Grid from '@mui/material/Grid'
 import TextField from "@mui/material/TextField"
+import Typography from "@mui/material/Typography"
 
 import Menu from "../components/Menu"
 import LoginForm from "../components/LoginForm"
@@ -72,17 +73,21 @@ const Login = () => {
                         <Grid item xl={6}>
                             <Box height='100vh' sx={{bgcolor: '#B3E6EA', borderRight:'1px solid black'}}>
                                 <Grid container columnSpacing={2}>
+                                    <Grid item xl={12}>
+                                    <Typography marginTop={2} variant='h4' marginTop={5} align='center' fontFamily='Lancelot'>
+                                        Sample Quotes
+                                    </Typography>
+                                    </Grid>
                                     <Grid item xl={6}>
                                         <Grid container>
                                             <Quote ml={2} text=" The point of using Lorem Ipsum is that it has a more-or-less normal distribution of 
                                         letters, as opposed to using 'Content here, content here', making it look like readable English. 
                                         Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 
-                                        'lorem ipsum' will uncover many web sites still in their infancy" author='Joe Moe'/>
+                                        'lorem ipsum' will uncover many web sites still in their infancy" author='Sample Author'/>
                                         <Quote ml={2} text=" The point of using Lorem Ipsum is that it has a more-or-less normal distribution of 
                                         letters, as opposed to using 'Content here, content here', making it look like readable English. 
                                         Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 
-                                        'lorem ipsum' will uncover many web sites still in their infancy.The point of using Lorem Ipsum is that it has a more-or-less normal distribution of 
-                                        letters, as opposed to using 'Content here, content here'," author='Joe Moe'/>
+                                        'lorem ipsum' will uncover many web sites still in their infancy" author='Sample Author'/>
                                         </Grid>
                                     </Grid>
                                     <Grid item xl={6}>
@@ -90,24 +95,13 @@ const Login = () => {
                                             <Quote mr={2} text=" The point of using Lorem Ipsum is that it has a more-or-less normal distribution of 
                                             letters, as opposed to using 'Content here, content here', making it look like readable English. 
                                             Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 
-                                            'lorem ipsum' will uncover many web sites still in their infancy" author='Joe Moe'/>
+                                            'lorem ipsum' will uncover many web sites still in their infancy" author='Sample Author'/>
+                                            <Quote mr={2} text=" The point of using Lorem Ipsum is that it has a more-or-less normal distribution of 
+                                            letters, as opposed to using 'Content here, content here', making it look like readable English. 
+                                            Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 
+                                            'lorem ipsum' will uncover many web sites still in their infancy" author='Sample Author'/>
                                         </Grid>
                                     </Grid>
-                                    {/* <Quote text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an 
-                                    unknown printer took a galley of type and scrambled it to make a type specimen book." author='Joe Moe'/>
-                                    <Quote text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an 
-                                    unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s" author='Woo Back'/>
-                                    
-                                    <Quote text=" The point of using Lorem Ipsum is that it has a more-or-less normal distribution of 
-                                    letters, as opposed to using 'Content here, content here', making it look like readable English. 
-                                    Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 
-                                    'lorem ipsum' will uncover many web sites still in their infancy" author='Joe Moe'/> */}
-                                    
-
-                                    
                                 </Grid>
                             </Box>
                         </Grid>

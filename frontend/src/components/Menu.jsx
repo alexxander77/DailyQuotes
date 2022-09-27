@@ -38,6 +38,8 @@ const Menu = (props) => {
     const navigate_login = () => {
         navigate('/login')
     }
+
+  
     return (
                 <Grid item xl={0.5}>
                     <Box height='100%' minHeight='100vh' sx={{bgcolor: '#2ECC71'}}>
@@ -49,9 +51,6 @@ const Menu = (props) => {
                                 <AiOutlineUser size={35} onClick={navigate_login} cursor='pointer'/>
                             </MenuItem>
                             {user && ( <>
-                                    <MenuItem>
-                                        <AiFillHeart size={35} cursor='pointer'/>
-                                    </MenuItem>
                                     <MenuItem>
                                         <GoSignOut size={35} cursor='pointer' onClick={on_logout}/>
                                     </MenuItem>

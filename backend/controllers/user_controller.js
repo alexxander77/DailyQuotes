@@ -53,7 +53,8 @@ const login_user = async_handler(async (req, res) => {
             _id: user.id,
             name: user.name,
             email: user.email,
-            token: generate_token(user._id)
+            token: generate_token(user._id),
+            liked_quotes: user.liked_quotes
         })
     }
     else {
@@ -76,6 +77,7 @@ const like_quote = async_handler(async (req, res) => {
     else {
         const updateQuery = await User.findByIdAndUpdate(req.user.id,{$push: {liked_quotes: req.body.quote_id}} );
         res.status(200).json({
+            quote_id: req.body.quote_id,
             message: `Liked quote ${req.body.quote_id}`
             
         })
@@ -93,6 +95,7 @@ const dislike_quote = async_handler(async (req, res) => {
     else {
         const updateQuery = await User.findByIdAndUpdate(req.user.id, {$pull: {liked_quotes: req.body.quote_id}})
         res.status(200).json({
+            quote_id: req.body.quote_id,
             message: `Disliked quoute ${req.body.quote_id} `
         })
     }

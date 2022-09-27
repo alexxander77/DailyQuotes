@@ -5,26 +5,19 @@ import Main from "./pages/Main";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import User from "./pages/User";
-
 import Header from "./components/Header"
 import StyledMenu from "./components/Menu";
 import { useState } from "react";
 
 
 function App() {
-  const [width, set_width] = useState(window.innerWidth)
-  const [height, set_height] = useState(window.innerHeight)
   
   return (
     <>
       <Router>
         <div>
-          {/* <Header/> */}
-          {/* <StyledMenu
-            className="menu"
-          /> */}
           <Routes>
-            <Route path="/" element={<Main className="main" width={width} height={height}/>}></Route>
+            <Route path="/" element={<Main className="main"/>}></Route>
             <Route path="/login" element={<Login/>}></Route>
             <Route path="/register" element={<Register/>}></Route>
             <Route path="/user" element={<User/>}></Route>

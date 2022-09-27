@@ -16,6 +16,9 @@ import Grid from '@mui/material/Grid';
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
+import {dislike} from "../features/auth/authSlice"
+
+
 const User = () => {
 
     const navigate = useNavigate()
@@ -33,7 +36,7 @@ const User = () => {
         }
 
         dispatch(get_all_quotes())
-
+        
         return () => {
             dispatch(reset())
         }
@@ -65,9 +68,9 @@ const User = () => {
                                             <Grid container>
                                                 { 
                                                     quotes.map((quote, index) => {
-                                                        if(quote.created_by_user == user._id) {
+                                                        if(quote.created_by_user == user._id) 
                                                             return <Quote flag={true} ml={30} mr={30} id={quote._id} text={quote.text} author={quote.author}></Quote> 
-                                                        }
+                                                        
                                                     })
                                                 }
                                             </Grid>
